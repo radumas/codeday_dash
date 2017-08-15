@@ -14,14 +14,21 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-
-con = connect(os.environ["DATABASE_URL"])
+database_url = os.getenv("DATABASE_URL")
+if database_url is not None:
+    con = connect(database_url)
+else:
+    import configparser
+    CONFIG = configparser.ConfigParser()
+    CONFIG.read('../db.cfg')
+    dbset = CONFIG['DBSETTINGS']
+    con = connect(**dbset)
 
 app = dash.Dash()
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
-weekday_avg = pandasql.read_table('bluetooth_avg_jan', con)
+weekday_avg = pandasql.read_sql('SELECT * FROM bluetooth_avg_jan', con)
 
 mapbox_token = 'pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q'
 
