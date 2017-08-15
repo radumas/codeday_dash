@@ -1,0 +1,1 @@
+web: gunicorn graph_map:server

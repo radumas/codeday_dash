@@ -1,6 +1,8 @@
 # coding: utf-8
 import json
 import itertools
+import os
+
 import plotly.graph_objs as go
 
 from psycopg2 import connect
@@ -12,47 +14,21 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-import configparser
-CONFIG = configparser.ConfigParser()
-CONFIG.read('../db.cfg')
-dbset = CONFIG['DBSETTINGS']
-con = connect(**dbset)
 
+con = connect(os.environ["DATABASE_URL"])
 
 app = dash.Dash()
+server = app.server
+server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
-resultid = pgsql.Literal('BR2_BR3')
-
-resultids = pgsql.Literal(['BR1_BR2', 'BR2_BR3', 'BR3_BR4'])
-
-weekday_avg_sql = pgsql.SQL('''
-WITH agg AS(SELECT segment_id, start_road ||': ' || start_crossstreet ||' to '||end_crossstreet as segment_name, 
-datetime_bin::TIME AS "Time", AVG(tt)::INT
-FROM bluetooth.aggr_5min
-INNER JOIN bluetooth.ref_segments USING (analysis_id)
-WHERE ARRAY[segment_name::TEXT] <@ {resultids} and EXTRACT('isodow' FROM datetime_bin) <6 AND datetime_bin >= '2017-01-01'
-AND datetime_bin < '2017-02-01'
-GROUP BY segment_id, segment_name, "Time" )
-
-SELECT * 
-FROM agg
-RIGHT OUTER JOIN (SELECT (generate_series(0,287) * interval '5 minutes')::TIME "Time") t using ("Time")
-ORDER BY segment_id, "Time"''')
-print('Loading Data')
-weekday_avg = pandasql.read_sql(weekday_avg_sql.format(resultids=resultids), con)
-
+weekday_avg = pandasql.read_table('bluetooth_avg_jan', con)
 
 mapbox_token = 'pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q'
 
+geometry_sql = pgsql.SQL('''SELECT segment_name, segment_id,  ST_ASGeoJSON(geom) geojson
+FROM bluetooth_routes ''')
 
-
-geometry_sql = pgsql.SQL('''SELECT resultid, segment_id, start_road as segment_name, ST_ASGeoJSON(geom) geojson
-FROM gis.bluetooth_routes
-INNER JOIN bluetooth.ref_segments ON resultid = segment_name
---FROM bluetooth.routes
-WHERE ARRAY[resultid::TEXT] <@ {resultids} ''')
-
-map_data = pandasql.read_sql(geometry_sql.format(resultids=resultids), con)
+map_data = pandasql.read_sql(geometry_sql, con)
 
 def get_lat_lon(geojson):
     lons, lats = [], []
@@ -71,10 +47,10 @@ for row in map_data.itertuples():
         lon=lons,
         mode='lines',
         hoverinfo='name',
-        name=row.segment_name,
         customdata=list(itertools.repeat(row.segment_id, times=len(lats))),
-        text=row.segment_name,
-        showlegend=False
+        name=row.segment_name,
+        showlegend=False,
+        line=dict(color='#004B85')
     ))
     
 map_layout = go.Layout(
@@ -94,24 +70,11 @@ map_layout = go.Layout(
     )
 )    
 
-                                
-
-
 app.layout = html.Div(children=[html.Div(html.H2('Click on a segment to view average travel times for it.')),
                                 html.Div(dcc.Graph(id='bluetooth-map', 
                                                    figure=dict(data=segments, layout=map_layout))),
-#                                html.Pre(id='click-data', style={'border': 'thin lightgrey solid'}),
                                 html.Div(dcc.Graph(id='travel-time-graph'))
                                 ])
-#@app.callback(
-#    Output('click-data', 'children'),
-#    [Input('bluetooth-map', 'clickData')])
-#def print_click_data(click_data):
-#    segment_id = 63
-#    if click_data is not None:
-#        segment_id = click_data['points'][0]['customdata']
-#    segment_name = weekday_avg[weekday_avg['segment_id'] ==  segment_id].iloc[[0]]['segment_name']
-#    return str(segment_id) +': ' + segment_name
 
 @app.callback(
     Output('travel-time-graph', 'figure'),
