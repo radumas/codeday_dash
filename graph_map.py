@@ -29,15 +29,22 @@ app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
+logger = app.server.logger
+logger.setLevel(10)
+
+
 
 weekday_avg = pandasql.read_sql('SELECT * FROM bluetooth_avg_jan', con)
+
+segment_ids = pgsql.Literal(weekday_avg.segment_id.unique().tolist())
 
 mapbox_token = 'pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q'
 
 geometry_sql = pgsql.SQL('''SELECT segment_name, segment_id,  ST_ASGeoJSON(geom) geojson
-FROM bluetooth_routes ''')
+FROM bluetooth_routes
+WHERE ARRAY[segment_id] <@ {segment_ids} ''')
 
-map_data = pandasql.read_sql(geometry_sql, con)
+map_data = pandasql.read_sql(geometry_sql.format(segment_ids=segment_ids), con)
 
 def get_lat_lon(geojson):
     lons, lats = [], []
@@ -97,7 +104,9 @@ def update_graph(segment):
                                 
     filtered_data = weekday_avg[weekday_avg['segment_id'] ==  segment_id]
     
-    title = filtered_data.iloc[0]['segment_name']
+    logger.debug(filtered_data.head())
+    
+    title = filtered_data['segment_name'].iloc[0]
     
     
     data = [go.Scatter(x=filtered_data['Time'],
