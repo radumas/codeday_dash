@@ -7,10 +7,10 @@ WHERE EXTRACT('isodow' FROM datetime_bin) <6 AND datetime_bin >= '2017-01-01'
 AND datetime_bin < '2017-02-01'
 GROUP BY analysis_id, "Time" 
 )
-SELECT segment_id, segment_name, "Time", avg
+SELECT segment_id, "Time", avg
 INTO public.bluetooth_avg_jan
 FROM agg
-INNER JOIN (SELECT DISTINCT segment_id, analysis_id, start_road ||': ' || start_crossstreet ||' to '||end_crossstreet as segment_name, (generate_series(0,287) * interval '5 minutes')::TIME "Time"
+INNER JOIN (SELECT DISTINCT segment_id, analysis_id, (generate_series(0,287) * interval '5 minutes')::TIME "Time"
 FROM bluetooth.ref_segments) all_segs USING (analysis_id, "Time");
 
 ALTER TABLE public.bluetooth_avg_jan OWNER TO rdumas;
