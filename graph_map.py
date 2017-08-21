@@ -42,7 +42,7 @@ segment_ids = pgsql.Literal(weekday_avg.segment_id.unique().tolist())
 
 mapbox_token = 'pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q'
 
-geometry_sql = pgsql.SQL('''SELECT segment_name, segment_id,  ST_ASGeoJSON(geom) geojson
+geometry_sql = pgsql.SQL('''SELECT start_road, segment_name, segment_id,  ST_ASGeoJSON(geom) geojson
 FROM bluetooth_routes
 WHERE ARRAY[segment_id] <@ {segment_ids} ''')
 
@@ -57,7 +57,9 @@ def get_lat_lon(geojson):
 
 segments = []
 
-for row in map_data.itertuples():
+crossover_df = pandas.DataFrame(columns=['segment_id','curveNumber','segment_name'])
+
+for curve_number, row in enumerate(map_data.itertuples()):
     geojson = json.loads(row.geojson)
     lats, lons = get_lat_lon(geojson)
     segments.append(go.Scattermapbox(
@@ -65,11 +67,14 @@ for row in map_data.itertuples():
         lon=lons,
         mode='lines',
         hoverinfo='name',
-        customdata=list(itertools.repeat(row.segment_id, times=len(lats))),
-        name=row.segment_name,
+        name=row.start_road,
         showlegend=False,
         line=dict(color='#004B85')
     ))
+    crossover_df = crossover_df.append({'segment_id':row.segment_id,
+                                        'curveNumber':curve_number,
+                                        'segment_name':row.segment_name},
+                                       ignore_index=True)
     
 map_layout = go.Layout(
     title='Bluetooth Segments',
@@ -108,13 +113,14 @@ def update_graph(segment):
     if segment is None:
         segment_id = 63
     else:
-        segment_id = segment['points'][0]['customdata']
+        row = crossover_df[crossover_df['curveNumber']==segment['points'][0]['curveNumber']]
+        segment_id = row.segment_id.iloc[0]
                                 
     filtered_data = weekday_avg[weekday_avg['segment_id'] ==  segment_id]
     
     logger.debug(filtered_data.head())
     
-    title = filtered_data['segment_name'].iloc[0]
+    title = crossover_df[crossover_df['segment_id']==segment_id]['segment_name'].iloc[0]
     
     
     data = [go.Scatter(x=filtered_data['Time'],
