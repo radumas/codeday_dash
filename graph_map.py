@@ -25,8 +25,10 @@ else:
     con = connect(**dbset)
 
 app = dash.Dash()
-app.css.config.serve_locally = True
-app.scripts.config.serve_locally = True
+# In case there are problems with react loading from unpkg, set to True
+app.css.config.serve_locally = False
+app.scripts.config.serve_locally = False
+
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 logger = app.server.logger
@@ -87,10 +89,16 @@ map_layout = go.Layout(
 )    
 
 app.layout = html.Div(children=[html.Div(html.H2('Click on a segment to view average travel times for it.')),
-                                html.Div(dcc.Graph(id='bluetooth-map', 
-                                                   figure=dict(data=segments, layout=map_layout))),
-                                html.Div(dcc.Graph(id='travel-time-graph'))
-                                ])
+                                html.Div(children=[html.Div(dcc.Graph(id='bluetooth-map', 
+                                                                      figure=dict(data=segments, layout=map_layout)),
+                                                            className="six columns"),
+                                                   html.Div(dcc.Graph(id='travel-time-graph'),
+                                                            className="six columns")
+                                                  ], className="row")
+                               ])
+#Makes set of graphs more responsive
+#See https://community.plot.ly/t/orient-2-graphs-based-on-window-aspect-mobile-responsiveness/5475/2
+app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 @app.callback(
     Output('travel-time-graph', 'figure'),
