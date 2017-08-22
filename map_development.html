@@ -11805,7 +11805,7 @@ div#notebook {
 
 
 <div class="output_html rendered_html output_subarea ">
-<script>requirejs.config({paths: { 'plotly': ['https://cdn.plot.ly/plotly-latest.min']},});if(!window.Plotly) { {require(['plotly'], function(plotly) {window.Plotly=plotly;}); } }</script>
+<script>requirejs.config({paths: { 'plotly': ['https://cdn.plot.ly/plotly-latest.min']},});if(!window.Plotly) {{require(['plotly'],function(plotly) {window.Plotly=plotly;});}}</script>
 </div>
 
 </div>
@@ -11846,7 +11846,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
@@ -12375,7 +12375,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">weekday_avg_sql</span> <span class="o">=</span> <span class="n">pgsql</span><span class="o">.</span><span class="n">SQL</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -12393,7 +12393,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">richmond_jan</span> <span class="o">=</span> <span class="n">pandasql</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">weekday_avg_sql</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultid</span><span class="o">=</span><span class="n">pgsql</span><span class="o">.</span><span class="n">Literal</span><span class="p">(</span><span class="s1">&#39;BR2_BR3&#39;</span><span class="p">)),</span> <span class="n">con</span><span class="p">)</span>
@@ -12406,7 +12406,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">richmond_jan</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span>
@@ -12424,10 +12424,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">trace</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">trace</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;graph1.html&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">trace</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;graph1.html&#39;</span><span class="p">,</span> <span class="n">auto_open</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12445,7 +12446,20 @@ div#notebook {
 
 
 <div class="output_html rendered_html output_subarea ">
-<div id="902de5ee-2977-4e0a-8a37-e480f1eee4ad" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("902de5ee-2977-4e0a-8a37-e480f1eee4ad", [{"y": [228.1818181818182, 188.6, 211.5, 197.25, 198.0, 187.2, 241.0, 230.57142857142858, 215.0, 190.33333333333334, 160.25, 207.4, 201.83333333333334, 226.5, 181.0, 224.0, 222.2, 170.33333333333334, 210.66666666666666, 212.66666666666666, 210.5, 247.8, 162.0, 226.66666666666666, 209.875, 192.33333333333334, 235.75, 309.0, 178.0, 160.66666666666666, 398.5, 200.0, 207.0, 232.66666666666666, 196.5, 174.5, 272.0, 178.0, 247.33333333333334, 308.0, 321.6666666666667, 167.0, 196.0, 264.0, 155.5, 191.0, 192.5, 240.6, 151.0, 234.0, 137.0, 133.5, 181.25, 197.5, 193.8, 220.16666666666666, 185.0, 158.0, 216.8, 188.33333333333334, 130.0, 215.5, 210.0, 188.66666666666666, 161.4, 218.5, 225.33333333333334, 190.0, 187.2, 187.0, 237.23076923076923, 188.5, 198.33333333333334, 211.66666666666666, 180.33333333333334, 215.4, 177.53333333333333, 205.44444444444446, 237.66666666666666, 237.3846153846154, 231.14285714285714, 218.88888888888889, 207.25, 217.57142857142858, 233.64285714285714, 249.31578947368422, 220.8235294117647, 237.76923076923077, 255.6875, 341.5625, 324.0, 273.05882352941177, 306.94736842105266, 299.125, 290.46153846153845, 323.1666666666667, 304.7368421052632, 301.8636363636364, 369.8421052631579, 420.27777777777777, 427.6666666666667, 448.8888888888889, 472.7142857142857, 479.63157894736844, 432.1818181818182, 433.59090909090907, 413.85, 377.72727272727275, 376.5, 378.5263157894737, 367.27777777777777, 379.95238095238096, 386.57142857142856, 365.3333333333333, 393.1875, 382.22222222222223, 363.9047619047619, 381.2307692307692, 411.23809523809524, 389.45, 361.06666666666666, 359.6666666666667, 374.4375, 337.05, 368.6923076923077, 319.3125, 368.6666666666667, 353.27777777777777, 349.72222222222223, 337.5882352941176, 341.0, 290.14285714285717, 316.64285714285717, 311.4375, 305.875, 318.0625, 289.75, 322.15384615384613, 361.0769230769231, 374.0625, 349.2352941176471, 350.7692307692308, 367.53333333333336, 381.2, 387.2142857142857, 396.2142857142857, 391.6, 432.875, 415.8125, 430.8666666666667, 392.0, 385.6, 415.35714285714283, 363.06666666666666, 396.27777777777777, 356.94117647058823, 356.125, 356.0769230769231, 394.64285714285717, 383.0769230769231, 324.6666666666667, 383.5882352941176, 336.8, 350.2352941176471, 354.0, 335.35714285714283, 362.4, 319.0, 308.0, 329.93333333333334, 334.9, 328.73333333333335, 294.25, 391.75, 369.07142857142856, 326.6923076923077, 313.6470588235294, 322.06666666666666, 353.375, 358.14285714285717, 324.1578947368421, 323.7142857142857, 361.38461538461536, 340.2142857142857, 331.85714285714283, 328.6666666666667, 331.0625, 333.63157894736844, 336.8636363636364, 309.8, 326.6842105263158, 267.6875, 321.4, 317.6190476190476, 294.2, 291.45454545454544, 284.22222222222223, 294.5263157894737, 251.1764705882353, 292.94736842105266, 289.04761904761904, 272.7142857142857, 326.2631578947368, 339.3888888888889, 352.1904761904762, 334.36842105263156, 363.1818181818182, 442.1111111111111, 439.6, 409.8421052631579, 428.65, 490.25, 412.55, 474.22222222222223, 454.1904761904762, 413.7368421052632, 410.4736842105263, 405.2857142857143, 390.95, 355.9, 405.29411764705884, 379.6842105263158, 400.57894736842104, 450.6666666666667, 503.2857142857143, 524.3333333333334, 477.0, 424.375, 478.1111111111111, 420.0, 379.1764705882353, 404.0, 309.7894736842105, 317.0833333333333, 332.0625, 272.0, 307.3333333333333, 280.8666666666667, 313.0769230769231, 250.6875, 256.45454545454544, 269.44444444444446, 261.0, 277.8181818181818, 262.0, 267.53333333333336, 297.14285714285717, 250.0, 231.36363636363637, 239.5, 273.2, 240.4375, 272.45454545454544, 244.66666666666666, 259.53846153846155, 245.64285714285714, 236.86666666666667, 244.75, 252.27272727272728, 233.1764705882353, 264.53846153846155, 248.9090909090909, 242.15384615384616, 217.15384615384616, 206.375, 247.83333333333334, 236.23076923076923, 255.75, 202.4375, 239.8181818181818, 230.05882352941177, 228.71428571428572, 237.5625, 210.0, 246.58333333333334, 225.5, 235.75, 248.66666666666666, 277.8888888888889, 255.6, 204.8181818181818, 348.2, 303.6666666666667, 227.1818181818182, 314.0, 205.88888888888889, 246.3], "mode": "lines", "type": "scatter", "x": ["00:00:00", "00:05:00", "00:10:00", "00:15:00", "00:20:00", "00:25:00", "00:30:00", "00:35:00", "00:40:00", "00:45:00", "00:50:00", "00:55:00", "01:00:00", "01:05:00", "01:10:00", "01:15:00", "01:20:00", "01:25:00", "01:30:00", "01:35:00", "01:40:00", "01:45:00", "01:50:00", "01:55:00", "02:00:00", "02:05:00", "02:10:00", "02:15:00", "02:20:00", "02:25:00", "02:35:00", "02:40:00", "02:45:00", "02:50:00", "02:55:00", "03:00:00", "03:05:00", "03:10:00", "03:15:00", "03:20:00", "03:25:00", "03:30:00", "03:35:00", "03:40:00", "03:45:00", "03:50:00", "03:55:00", "04:00:00", "04:05:00", "04:10:00", "04:15:00", "04:20:00", "04:25:00", "04:30:00", "04:35:00", "04:40:00", "04:45:00", "04:50:00", "04:55:00", "05:00:00", "05:05:00", "05:10:00", "05:15:00", "05:20:00", "05:25:00", "05:30:00", "05:35:00", "05:40:00", "05:45:00", "05:50:00", "05:55:00", "06:00:00", "06:05:00", "06:10:00", "06:15:00", "06:20:00", "06:25:00", "06:30:00", "06:35:00", "06:40:00", "06:45:00", "06:50:00", "06:55:00", "07:00:00", "07:05:00", "07:10:00", "07:15:00", "07:20:00", "07:25:00", "07:30:00", "07:35:00", "07:40:00", "07:45:00", "07:50:00", "07:55:00", "08:00:00", "08:05:00", "08:10:00", "08:15:00", "08:20:00", "08:25:00", "08:30:00", "08:35:00", "08:40:00", "08:45:00", "08:50:00", "08:55:00", "09:00:00", "09:05:00", "09:10:00", "09:15:00", "09:20:00", "09:25:00", "09:30:00", "09:35:00", "09:40:00", "09:45:00", "09:50:00", "09:55:00", "10:00:00", "10:05:00", "10:10:00", "10:15:00", "10:20:00", "10:25:00", "10:30:00", "10:35:00", "10:40:00", "10:45:00", "10:50:00", "10:55:00", "11:00:00", "11:05:00", "11:10:00", "11:15:00", "11:20:00", "11:25:00", "11:30:00", "11:35:00", "11:40:00", "11:45:00", "11:50:00", "11:55:00", "12:00:00", "12:05:00", "12:10:00", "12:15:00", "12:20:00", "12:25:00", "12:30:00", "12:35:00", "12:40:00", "12:45:00", "12:50:00", "12:55:00", "13:00:00", "13:05:00", "13:10:00", "13:15:00", "13:20:00", "13:25:00", "13:30:00", "13:35:00", "13:40:00", "13:45:00", "13:50:00", "13:55:00", "14:00:00", "14:05:00", "14:10:00", "14:15:00", "14:20:00", "14:25:00", "14:30:00", "14:35:00", "14:40:00", "14:45:00", "14:50:00", "14:55:00", "15:00:00", "15:05:00", "15:10:00", "15:15:00", "15:20:00", "15:25:00", "15:30:00", "15:35:00", "15:40:00", "15:45:00", "15:50:00", "15:55:00", "16:00:00", "16:05:00", "16:10:00", "16:15:00", "16:20:00", "16:25:00", "16:30:00", "16:35:00", "16:40:00", "16:45:00", "16:50:00", "16:55:00", "17:00:00", "17:05:00", "17:10:00", "17:15:00", "17:20:00", "17:25:00", "17:30:00", "17:35:00", "17:40:00", "17:45:00", "17:50:00", "17:55:00", "18:00:00", "18:05:00", "18:10:00", "18:15:00", "18:20:00", "18:25:00", "18:30:00", "18:35:00", "18:40:00", "18:45:00", "18:50:00", "18:55:00", "19:00:00", "19:05:00", "19:10:00", "19:15:00", "19:20:00", "19:25:00", "19:30:00", "19:35:00", "19:40:00", "19:45:00", "19:50:00", "19:55:00", "20:00:00", "20:05:00", "20:10:00", "20:15:00", "20:20:00", "20:25:00", "20:30:00", "20:35:00", "20:40:00", "20:45:00", "20:50:00", "20:55:00", "21:00:00", "21:05:00", "21:10:00", "21:15:00", "21:20:00", "21:25:00", "21:30:00", "21:35:00", "21:40:00", "21:45:00", "21:50:00", "21:55:00", "22:00:00", "22:05:00", "22:10:00", "22:15:00", "22:20:00", "22:25:00", "22:30:00", "22:35:00", "22:40:00", "22:45:00", "22:50:00", "22:55:00", "23:00:00", "23:05:00", "23:10:00", "23:15:00", "23:20:00", "23:25:00", "23:30:00", "23:35:00", "23:40:00", "23:45:00", "23:50:00", "23:55:00"]}], {"title": "Average Weekday Travel Times", "yaxis": {"title": "Travel Time (s)"}, "xaxis": {"title": "Time of Day"}}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
+<div id="4ab0919e-97b3-4afc-89b7-49c9ecb76c0b" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("4ab0919e-97b3-4afc-89b7-49c9ecb76c0b", [{"y": [228.1818181818182, 188.6, 211.5, 197.25, 198.0, 187.2, 241.0, 230.57142857142858, 215.0, 190.33333333333334, 160.25, 207.4, 201.83333333333334, 226.5, 181.0, 224.0, 222.2, 170.33333333333334, 210.66666666666666, 212.66666666666666, 210.5, 247.8, 162.0, 226.66666666666666, 209.875, 192.33333333333334, 235.75, 309.0, 178.0, 160.66666666666666, 398.5, 200.0, 207.0, 232.66666666666666, 196.5, 174.5, 272.0, 178.0, 247.33333333333334, 308.0, 321.6666666666667, 167.0, 196.0, 264.0, 155.5, 191.0, 192.5, 240.6, 151.0, 234.0, 137.0, 133.5, 181.25, 197.5, 193.8, 220.16666666666666, 185.0, 158.0, 216.8, 188.33333333333334, 130.0, 215.5, 210.0, 188.66666666666666, 161.4, 218.5, 225.33333333333334, 190.0, 187.2, 187.0, 237.23076923076923, 188.5, 198.33333333333334, 211.66666666666666, 180.33333333333334, 215.4, 177.53333333333333, 205.44444444444446, 237.66666666666666, 237.3846153846154, 231.14285714285714, 218.88888888888889, 207.25, 217.57142857142858, 233.64285714285714, 249.31578947368422, 220.8235294117647, 237.76923076923077, 255.6875, 341.5625, 324.0, 273.05882352941177, 306.94736842105266, 299.125, 290.46153846153845, 323.1666666666667, 304.7368421052632, 301.8636363636364, 369.8421052631579, 420.27777777777777, 427.6666666666667, 448.8888888888889, 472.7142857142857, 479.63157894736844, 432.1818181818182, 433.59090909090907, 413.85, 377.72727272727275, 376.5, 378.5263157894737, 367.27777777777777, 379.95238095238096, 386.57142857142856, 365.3333333333333, 393.1875, 382.22222222222223, 363.9047619047619, 381.2307692307692, 411.23809523809524, 389.45, 361.06666666666666, 359.6666666666667, 374.4375, 337.05, 368.6923076923077, 319.3125, 368.6666666666667, 353.27777777777777, 349.72222222222223, 337.5882352941176, 341.0, 290.14285714285717, 316.64285714285717, 311.4375, 305.875, 318.0625, 289.75, 322.15384615384613, 361.0769230769231, 374.0625, 349.2352941176471, 350.7692307692308, 367.53333333333336, 381.2, 387.2142857142857, 396.2142857142857, 391.6, 432.875, 415.8125, 430.8666666666667, 392.0, 385.6, 415.35714285714283, 363.06666666666666, 396.27777777777777, 356.94117647058823, 356.125, 356.0769230769231, 394.64285714285717, 383.0769230769231, 324.6666666666667, 383.5882352941176, 336.8, 350.2352941176471, 354.0, 335.35714285714283, 362.4, 319.0, 308.0, 329.93333333333334, 334.9, 328.73333333333335, 294.25, 391.75, 369.07142857142856, 326.6923076923077, 313.6470588235294, 322.06666666666666, 353.375, 358.14285714285717, 324.1578947368421, 323.7142857142857, 361.38461538461536, 340.2142857142857, 331.85714285714283, 328.6666666666667, 331.0625, 333.63157894736844, 336.8636363636364, 309.8, 326.6842105263158, 267.6875, 321.4, 317.6190476190476, 294.2, 291.45454545454544, 284.22222222222223, 294.5263157894737, 251.1764705882353, 292.94736842105266, 289.04761904761904, 272.7142857142857, 326.2631578947368, 339.3888888888889, 352.1904761904762, 334.36842105263156, 363.1818181818182, 442.1111111111111, 439.6, 409.8421052631579, 428.65, 490.25, 412.55, 474.22222222222223, 454.1904761904762, 413.7368421052632, 410.4736842105263, 405.2857142857143, 390.95, 355.9, 405.29411764705884, 379.6842105263158, 400.57894736842104, 450.6666666666667, 503.2857142857143, 524.3333333333334, 477.0, 424.375, 478.1111111111111, 420.0, 379.1764705882353, 404.0, 309.7894736842105, 317.0833333333333, 332.0625, 272.0, 307.3333333333333, 280.8666666666667, 313.0769230769231, 250.6875, 256.45454545454544, 269.44444444444446, 261.0, 277.8181818181818, 262.0, 267.53333333333336, 297.14285714285717, 250.0, 231.36363636363637, 239.5, 273.2, 240.4375, 272.45454545454544, 244.66666666666666, 259.53846153846155, 245.64285714285714, 236.86666666666667, 244.75, 252.27272727272728, 233.1764705882353, 264.53846153846155, 248.9090909090909, 242.15384615384616, 217.15384615384616, 206.375, 247.83333333333334, 236.23076923076923, 255.75, 202.4375, 239.8181818181818, 230.05882352941177, 228.71428571428572, 237.5625, 210.0, 246.58333333333334, 225.5, 235.75, 248.66666666666666, 277.8888888888889, 255.6, 204.8181818181818, 348.2, 303.6666666666667, 227.1818181818182, 314.0, 205.88888888888889, 246.3], "mode": "lines", "x": ["00:00:00", "00:05:00", "00:10:00", "00:15:00", "00:20:00", "00:25:00", "00:30:00", "00:35:00", "00:40:00", "00:45:00", "00:50:00", "00:55:00", "01:00:00", "01:05:00", "01:10:00", "01:15:00", "01:20:00", "01:25:00", "01:30:00", "01:35:00", "01:40:00", "01:45:00", "01:50:00", "01:55:00", "02:00:00", "02:05:00", "02:10:00", "02:15:00", "02:20:00", "02:25:00", "02:35:00", "02:40:00", "02:45:00", "02:50:00", "02:55:00", "03:00:00", "03:05:00", "03:10:00", "03:15:00", "03:20:00", "03:25:00", "03:30:00", "03:35:00", "03:40:00", "03:45:00", "03:50:00", "03:55:00", "04:00:00", "04:05:00", "04:10:00", "04:15:00", "04:20:00", "04:25:00", "04:30:00", "04:35:00", "04:40:00", "04:45:00", "04:50:00", "04:55:00", "05:00:00", "05:05:00", "05:10:00", "05:15:00", "05:20:00", "05:25:00", "05:30:00", "05:35:00", "05:40:00", "05:45:00", "05:50:00", "05:55:00", "06:00:00", "06:05:00", "06:10:00", "06:15:00", "06:20:00", "06:25:00", "06:30:00", "06:35:00", "06:40:00", "06:45:00", "06:50:00", "06:55:00", "07:00:00", "07:05:00", "07:10:00", "07:15:00", "07:20:00", "07:25:00", "07:30:00", "07:35:00", "07:40:00", "07:45:00", "07:50:00", "07:55:00", "08:00:00", "08:05:00", "08:10:00", "08:15:00", "08:20:00", "08:25:00", "08:30:00", "08:35:00", "08:40:00", "08:45:00", "08:50:00", "08:55:00", "09:00:00", "09:05:00", "09:10:00", "09:15:00", "09:20:00", "09:25:00", "09:30:00", "09:35:00", "09:40:00", "09:45:00", "09:50:00", "09:55:00", "10:00:00", "10:05:00", "10:10:00", "10:15:00", "10:20:00", "10:25:00", "10:30:00", "10:35:00", "10:40:00", "10:45:00", "10:50:00", "10:55:00", "11:00:00", "11:05:00", "11:10:00", "11:15:00", "11:20:00", "11:25:00", "11:30:00", "11:35:00", "11:40:00", "11:45:00", "11:50:00", "11:55:00", "12:00:00", "12:05:00", "12:10:00", "12:15:00", "12:20:00", "12:25:00", "12:30:00", "12:35:00", "12:40:00", "12:45:00", "12:50:00", "12:55:00", "13:00:00", "13:05:00", "13:10:00", "13:15:00", "13:20:00", "13:25:00", "13:30:00", "13:35:00", "13:40:00", "13:45:00", "13:50:00", "13:55:00", "14:00:00", "14:05:00", "14:10:00", "14:15:00", "14:20:00", "14:25:00", "14:30:00", "14:35:00", "14:40:00", "14:45:00", "14:50:00", "14:55:00", "15:00:00", "15:05:00", "15:10:00", "15:15:00", "15:20:00", "15:25:00", "15:30:00", "15:35:00", "15:40:00", "15:45:00", "15:50:00", "15:55:00", "16:00:00", "16:05:00", "16:10:00", "16:15:00", "16:20:00", "16:25:00", "16:30:00", "16:35:00", "16:40:00", "16:45:00", "16:50:00", "16:55:00", "17:00:00", "17:05:00", "17:10:00", "17:15:00", "17:20:00", "17:25:00", "17:30:00", "17:35:00", "17:40:00", "17:45:00", "17:50:00", "17:55:00", "18:00:00", "18:05:00", "18:10:00", "18:15:00", "18:20:00", "18:25:00", "18:30:00", "18:35:00", "18:40:00", "18:45:00", "18:50:00", "18:55:00", "19:00:00", "19:05:00", "19:10:00", "19:15:00", "19:20:00", "19:25:00", "19:30:00", "19:35:00", "19:40:00", "19:45:00", "19:50:00", "19:55:00", "20:00:00", "20:05:00", "20:10:00", "20:15:00", "20:20:00", "20:25:00", "20:30:00", "20:35:00", "20:40:00", "20:45:00", "20:50:00", "20:55:00", "21:00:00", "21:05:00", "21:10:00", "21:15:00", "21:20:00", "21:25:00", "21:30:00", "21:35:00", "21:40:00", "21:45:00", "21:50:00", "21:55:00", "22:00:00", "22:05:00", "22:10:00", "22:15:00", "22:20:00", "22:25:00", "22:30:00", "22:35:00", "22:40:00", "22:45:00", "22:50:00", "22:55:00", "23:00:00", "23:05:00", "23:10:00", "23:15:00", "23:20:00", "23:25:00", "23:30:00", "23:35:00", "23:40:00", "23:45:00", "23:50:00", "23:55:00"], "type": "scatter"}], {"xaxis": {"title": "Time of Day"}, "yaxis": {"title": "Travel Time (s)"}, "title": "Average Weekday Travel Times"}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;file:///home/rad/git/bdit/dash-env/graph1.html&#39;</pre>
 </div>
 
 </div>
@@ -12493,7 +12507,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">geometry_sql</span> <span class="o">=</span> <span class="n">pgsql</span><span class="o">.</span><span class="n">SQL</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;SELECT resultid, ST_ASGeoJSON(geom) geojson</span>
@@ -12508,7 +12522,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">resultid</span> <span class="o">=</span> <span class="n">pgsql</span><span class="o">.</span><span class="n">Literal</span><span class="p">(</span><span class="s1">&#39;BR2_BR3&#39;</span><span class="p">)</span>
@@ -12521,7 +12535,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">richmond_df</span> <span class="o">=</span> <span class="n">pandasql</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">geometry_sql</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultid</span><span class="o">=</span><span class="n">resultid</span><span class="p">),</span> <span class="n">con</span><span class="p">)</span>
@@ -12543,7 +12557,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -12556,7 +12570,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">richmond_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span>
@@ -12569,11 +12583,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># row[&#39;geojson&#39;][0]</span>
-<span class="n">geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">geojson</span><span class="p">)</span>
+<span class="n">geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">geojson</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">geojson</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
@@ -12587,7 +12601,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[60]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -12604,7 +12618,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_lat_lon</span><span class="p">(</span><span class="n">geojson</span><span class="p">):</span>
@@ -12622,7 +12636,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
@@ -12644,7 +12658,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">layout</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
@@ -12661,7 +12675,8 @@ div#notebook {
             <span class="n">lataxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="nb">range</span> <span class="o">=</span> <span class="p">[</span><span class="mf">43.64</span><span class="p">,</span> <span class="mf">43.66</span><span class="p">])</span>
         <span class="p">)</span>
     <span class="p">)</span>
-<span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">segments</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">))</span>
+<span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">segments</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;map1.html&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">segments</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;map1.html&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12679,7 +12694,20 @@ div#notebook {
 
 
 <div class="output_html rendered_html output_subarea ">
-<div id="f0f35d91-5031-4cd6-807c-40def7f9e83e" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("f0f35d91-5031-4cd6-807c-40def7f9e83e", [{"lat": [43.6533779496959, 43.653274372, 43.652924699, 43.652817608, 43.6527488719785, 43.6526765, 43.652664302, 43.652661795, 43.652664614, 43.652674443, 43.652704475, 43.652727052, 43.652744321, 43.652762545, 43.652806849, 43.652863219, 43.6526960196911, 43.652466163, 43.652258701, 43.652200482, 43.651963494, 43.6518692533017, 43.651692009, 43.651170123, 43.651071136, 43.6509147055464, 43.65086809, 43.650440882, 43.650341603, 43.650087001, 43.650000398645, 43.649906415, 43.649782045, 43.6495514018388, 43.649458068092], "lon": [-79.3691483292635, -79.369635999, -79.37114431, -79.371605168, -79.3719182016791, -79.372247789, -79.372366048, -79.372466891, -79.372620809, -79.372708586, -79.372831826, -79.372913922, -79.372966922, -79.373043313, -79.373339974, -79.373703517, -79.3744502032286, -79.375476665, -79.376373113, -79.376626621, -79.377759025, -79.3781844930669, -79.378984674, -79.38133373, -79.381776526, -79.382461617208, -79.382665767, -79.384650975, -79.385111098, -79.38629115, -79.3866971499272, -79.387137745, -79.387703167, -79.3887517920442, -79.3891761215011], "line": {"width": 2}, "mode": "lines", "type": "scattergeo"}], {"showlegend": false, "title": "Bluetooth segments", "geo": {"resolution": 50, "projection": {"type": "mercator"}, "showcountries": true, "showlakes": true, "showland": true, "lonaxis": {"range": [-79.39, -79.36]}, "scope": "North America", "lataxis": {"range": [43.64, 43.66]}}}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
+<div id="62cab1f0-b6d1-47c5-a2ae-c5faf15281aa" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("62cab1f0-b6d1-47c5-a2ae-c5faf15281aa", [{"lon": [-79.3691483292635, -79.369635999, -79.37114431, -79.371605168, -79.3719182016791, -79.372247789, -79.372366048, -79.372466891, -79.372620809, -79.372708586, -79.372831826, -79.372913922, -79.372966922, -79.373043313, -79.373339974, -79.373703517, -79.3744502032286, -79.375476665, -79.376373113, -79.376626621, -79.377759025, -79.3781844930669, -79.378984674, -79.38133373, -79.381776526, -79.382461617208, -79.382665767, -79.384650975, -79.385111098, -79.38629115, -79.3866971499272, -79.387137745, -79.387703167, -79.3887517920442, -79.3891761215011], "type": "scattergeo", "mode": "lines", "line": {"width": 2}, "lat": [43.6533779496959, 43.653274372, 43.652924699, 43.652817608, 43.6527488719785, 43.6526765, 43.652664302, 43.652661795, 43.652664614, 43.652674443, 43.652704475, 43.652727052, 43.652744321, 43.652762545, 43.652806849, 43.652863219, 43.6526960196911, 43.652466163, 43.652258701, 43.652200482, 43.651963494, 43.6518692533017, 43.651692009, 43.651170123, 43.651071136, 43.6509147055464, 43.65086809, 43.650440882, 43.650341603, 43.650087001, 43.650000398645, 43.649906415, 43.649782045, 43.6495514018388, 43.649458068092]}], {"showlegend": false, "title": "Bluetooth segments", "geo": {"showlakes": true, "lataxis": {"range": [43.64, 43.66]}, "scope": "North America", "showland": true, "lonaxis": {"range": [-79.39, -79.36]}, "projection": {"type": "mercator"}, "showcountries": true, "resolution": 50}}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;file:///home/rad/git/bdit/dash-env/map1.html&#39;</pre>
 </div>
 
 </div>
@@ -12690,7 +12718,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mapbox_token</span> <span class="o">=</span> <span class="s1">&#39;pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q&#39;</span>
@@ -12722,7 +12750,7 @@ div#notebook {
     <span class="p">)</span>
 <span class="p">)</span>    
 
-<span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">))</span>
+<span class="n">iplot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;jupyter/map_better&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12740,7 +12768,7 @@ div#notebook {
 
 
 <div class="output_html rendered_html output_subarea ">
-<div id="7bf3afe3-e90d-4d0e-81f9-dfb0ec0c91af" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("7bf3afe3-e90d-4d0e-81f9-dfb0ec0c91af", [{"hoverinfo": "text", "lon": [-79.3691483292635, -79.369635999, -79.37114431, -79.371605168, -79.3719182016791, -79.372247789, -79.372366048, -79.372466891, -79.372620809, -79.372708586, -79.372831826, -79.372913922, -79.372966922, -79.373043313, -79.373339974, -79.373703517, -79.3744502032286, -79.375476665, -79.376373113, -79.376626621, -79.377759025, -79.3781844930669, -79.378984674, -79.38133373, -79.381776526, -79.382461617208, -79.382665767, -79.384650975, -79.385111098, -79.38629115, -79.3866971499272, -79.387137745, -79.387703167, -79.3887517920442, -79.3891761215011], "mode": "lines", "type": "scattermapbox", "showlegend": false, "lat": [43.6533779496959, 43.653274372, 43.652924699, 43.652817608, 43.6527488719785, 43.6526765, 43.652664302, 43.652661795, 43.652664614, 43.652674443, 43.652704475, 43.652727052, 43.652744321, 43.652762545, 43.652806849, 43.652863219, 43.6526960196911, 43.652466163, 43.652258701, 43.652200482, 43.651963494, 43.6518692533017, 43.651692009, 43.651170123, 43.651071136, 43.6509147055464, 43.65086809, 43.650440882, 43.650341603, 43.650087001, 43.650000398645, 43.649906415, 43.649782045, 43.6495514018388, 43.649458068092]}], {"title": "Bluetooth Segments", "hovermode": "closest", "mapbox": {"zoom": 12, "pitch": 0, "bearing": 0, "style": "light", "accesstoken": "pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q", "center": {"lat": 43.65, "lon": -79.37}}, "autosize": true}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
+<div id="7882f59c-d690-45ee-97a2-0905bb3c5893" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("7882f59c-d690-45ee-97a2-0905bb3c5893", [{"hoverinfo": "text", "showlegend": false, "mode": "lines", "type": "scattermapbox", "lon": [-79.3691483292635, -79.369635999, -79.37114431, -79.371605168, -79.3719182016791, -79.372247789, -79.372366048, -79.372466891, -79.372620809, -79.372708586, -79.372831826, -79.372913922, -79.372966922, -79.373043313, -79.373339974, -79.373703517, -79.3744502032286, -79.375476665, -79.376373113, -79.376626621, -79.377759025, -79.3781844930669, -79.378984674, -79.38133373, -79.381776526, -79.382461617208, -79.382665767, -79.384650975, -79.385111098, -79.38629115, -79.3866971499272, -79.387137745, -79.387703167, -79.3887517920442, -79.3891761215011], "lat": [43.6533779496959, 43.653274372, 43.652924699, 43.652817608, 43.6527488719785, 43.6526765, 43.652664302, 43.652661795, 43.652664614, 43.652674443, 43.652704475, 43.652727052, 43.652744321, 43.652762545, 43.652806849, 43.652863219, 43.6526960196911, 43.652466163, 43.652258701, 43.652200482, 43.651963494, 43.6518692533017, 43.651692009, 43.651170123, 43.651071136, 43.6509147055464, 43.65086809, 43.650440882, 43.650341603, 43.650087001, 43.650000398645, 43.649906415, 43.649782045, 43.6495514018388, 43.649458068092]}], {"autosize": true, "mapbox": {"center": {"lon": -79.37, "lat": 43.65}, "bearing": 0, "pitch": 0, "style": "light", "zoom": 12, "accesstoken": "pk.eyJ1IjoicmVtb3RlZ2VudHJpZnkiLCJhIjoiY2lnanJzMjJpMDA1dnYxbHo5MTZtdGZsYSJ9.gLE8d40zmDAtMSSZyd2h1Q"}, "title": "Bluetooth Segments", "hovermode": "closest"}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
 </div>
 
 </div>
@@ -12751,10 +12779,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">weekday_avg_sql</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resultid</span><span class="o">=</span><span class="n">pgsql</span><span class="o">.</span><span class="n">Literal</span><span class="p">(</span><span class="s1">&#39;BR2_BR3&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">as_string</span><span class="p">(</span><span class="n">con</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;map_better.html&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12767,18 +12795,15 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-SELECT updated::TIME AS &#34;Time&#34;, AVG(timeinseconds)
-FROM bluetooth.bt_2017
-WHERE resultid = &#39;BR2_BR3&#39; and EXTRACT(&#39;isodow&#39; FROM updated) &lt;6
-GROUP BY &#34;Time&#34; 
-ORDER BY &#34;Time&#34; 
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;file:///home/rad/git/bdit/dash-env/map_better.html&#39;</pre>
 </div>
+
 </div>
 
 </div>
